@@ -25,7 +25,7 @@
 
 /* globals $, gtag, jQuery */
 
-const GoogleAnalyticEnhancedECommerce = {
+var GoogleAnalyticEnhancedECommerce = {
 
     setCurrency: function (Currency, gaMeasurementId) {
         gtag('config', gaMeasurementId, {'&cu': Currency});
