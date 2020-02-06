@@ -200,7 +200,7 @@ class Ganalytics extends Module
                     'label' => $this->l('Anonymize IP'),
                     'name' => 'GA_ANONYMIZE_ENABLED',
                     'hint' => $this->l('Use this option to anonymize the visitor’s IP to comply with data privacy laws in some countries'),
-                    'values'    => array(
+                    'values' => array(
                         array(
                             'id' => 'ga_anonymize_enabled',
                             'value' => 1,
@@ -807,7 +807,8 @@ class Ganalytics extends Module
     {
         if (isset($params['cart']->id_carrier)) {
             $carrier_name = Db::getInstance()->getValue('SELECT name FROM `' . _DB_PREFIX_ . 'carrier` WHERE id_carrier = ' . (int)$params['cart']->id_carrier);
-            $this->context->cookie->ga_cart .= 'MBG.addCheckoutOption(2, \'carrier\',\'' . $carrier_name . '\');';
+            if ($carrier_name)
+                $this->context->cookie->ga_cart .= 'MBG.addCheckoutOption(2, \'carrier\',\'' . $carrier_name . '\');';
         }
     }
 
